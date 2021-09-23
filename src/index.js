@@ -12,6 +12,13 @@ const app = express();
 // Set the port on which the server will run
 const port = process.env.PORT;
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "GET,POST,DELETE,PATCH");
+  next();
+});
+
 // this helps us to automatically parse the data which was
 // send to this server and get the data in "req" down below
 app.use(express.json());
